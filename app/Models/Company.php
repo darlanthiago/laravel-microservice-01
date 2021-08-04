@@ -21,4 +21,28 @@ class Company extends Model
         'instagram',
         'youtube',
     ];
+
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
+
+
+
+    public function getCompanies(string $filter = '')
+    {
+        $companies = $this
+            ->where(function ($query) use ($filter) {
+                if (!empty($filter)) {
+                    $query->where('name', 'LIKE', "%{$filter}%");
+                    $query->orWhere('email', '=', $filter);
+                    $query->orWhere('phone', '=', $filter);
+                }
+            })
+            ->with('category')
+            ->paginate();
+
+        return $companies;
+    }
 }
