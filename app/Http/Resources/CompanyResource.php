@@ -18,7 +18,7 @@ class CompanyResource extends JsonResource
         return [
             'identify' => $this->uuid,
             'name' => $this->name,
-            'categogy' => new CategoryResource($this->category),
+            'category' => new CategoryResource($this->category),
             'url' => $this->url,
             'email' => $this->email,
             'phone' => $this->phone,
