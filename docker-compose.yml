@@ -9,6 +9,8 @@ services:
                 uid: 1000
             context: ./
             dockerfile: Dockerfile
+        extra_hosts:
+            - "host.docker.internal:host-gateway"
         image: laravel-app
         restart: unless-stopped
         working_dir: /var/www/
@@ -29,6 +31,8 @@ services:
             - ./docker/nginx/:/etc/nginx/conf.d/
         networks:
             - microservices
+        extra_hosts:
+            - "host.docker.internal:host-gateway"
 
     # database
     db-micro-01:
