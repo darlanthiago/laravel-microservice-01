@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7759431e303e2d722a264a8a991a9e84",
+    "content-hash": "503b3b29347cd5d31e01b7c30804e2cf",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -117,6 +117,43 @@
                 }
             ],
             "time": "2021-01-20T22:51:39+00:00"
+        },
+        {
+            "name": "darlanthiago/microservices-common",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/darlanthiago/microservices-common.git",
+                "reference": "440e10d2b548f8c6970deccd8ed744be635a766f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/darlanthiago/microservices-common/zipball/440e10d2b548f8c6970deccd8ed744be635a766f",
+                "reference": "440e10d2b548f8c6970deccd8ed744be635a766f",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "DarlanThiago\\MicroservicesCommon\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Darlan Thiago",
+                    "email": "tdarlan1@hotmail.com"
+                }
+            ],
+            "description": "Package Files Utils Microservices",
+            "support": {
+                "issues": "https://github.com/darlanthiago/microservices-common/issues",
+                "source": "https://github.com/darlanthiago/microservices-common/tree/1.0.0"
+            },
+            "time": "2021-08-07T02:02:35+00:00"
         },
         {
             "name": "dflydev/dot-access-data",
