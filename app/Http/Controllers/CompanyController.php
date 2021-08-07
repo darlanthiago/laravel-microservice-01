@@ -5,16 +5,15 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreUpdateCompany;
 use App\Http\Resources\CompanyResource;
 use App\Models\Company;
+use App\Services\EvaluationService;
 use Illuminate\Http\Request;
 
 class CompanyController extends Controller
 {
-
-    protected $repository;
-
-    public function __construct(Company $company)
-    {
-        $this->repository = $company;
+    public function __construct(
+        protected Company $repository,
+        protected EvaluationService $evaluationService
+    ) {
     }
 
     /**
@@ -52,7 +51,12 @@ class CompanyController extends Controller
     {
         $company = $this->repository->where('uuid', $uuid)->with('category')->firstOrFail();
 
-        return new CompanyResource($company);
+        $evaluations = $this->evaluationService->getEvaluationsCompany($uuid)->json();
+
+        return (new CompanyResource($company))
+            ->additional([
+                'evaluations' => $evaluations['data']
+            ]);
     }
 
     /**
