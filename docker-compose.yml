@@ -11,6 +11,8 @@ services:
             dockerfile: Dockerfile
         extra_hosts:
             - "host.docker.internal:host-gateway"
+        depends_on:
+            - redis
         image: laravel-app
         restart: unless-stopped
         working_dir: /var/www/
