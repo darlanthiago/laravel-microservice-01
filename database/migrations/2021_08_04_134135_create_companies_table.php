@@ -17,7 +17,7 @@ class CreateCompaniesTable extends Migration
             $table->id();
             $table->foreignId('category_id')->constrained('categories');
             $table->uuid('uuid');
-            $table->string('name');
+            $table->string('name')->unique();
             $table->string('url');
             $table->string('phone')->unique()->nullable();
             $table->string('whatsapp')->unique();
@@ -25,6 +25,7 @@ class CreateCompaniesTable extends Migration
             $table->string('facebook')->unique()->nullable();
             $table->string('instagram')->unique()->nullable();
             $table->string('youtube')->unique()->nullable();
+            $table->string('image');
             $table->timestamps();
         });
     }
