@@ -27,6 +27,7 @@ class CompanyFactory extends Factory
             'name' => $this->faker->unique()->name(),
             'whatsapp' => $this->faker->unique()->numberBetween(10000000000, 99999999999),
             'email' => $this->faker->unique()->email(),
+            'image' => 'laravel.png',
         ];
     }
 }
