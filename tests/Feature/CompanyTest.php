@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\Company;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Http\UploadedFile;
 use Tests\TestCase;
 
 class CompanyTest extends TestCase
@@ -81,6 +82,7 @@ class CompanyTest extends TestCase
             'category_id' => '',
             'whatsapp' => '',
             'email' => '',
+            'image' => ''
         ]);
 
         // $response->dump();
@@ -98,12 +100,22 @@ class CompanyTest extends TestCase
 
         $category = Category::factory()->create();
 
-        $response = $this->postJson($this->endpoint, [
+        $fakeImage = UploadedFile::fake()->image('laravel.png');
+
+        $data = [
             'category_id' => $category->id,
             'name' => $this->faker()->unique()->name(),
             'email' => $this->faker()->unique()->email(),
             'whatsapp' => $this->faker->unique()->numberBetween(10000000000, 99999999999)
-        ]);
+        ];
+
+        $response = $this->call(
+            'POST',
+            $this->endpoint,
+            $data,
+            [],
+            ['image' => $fakeImage]
+        );
 
         // $response->dump();
 
